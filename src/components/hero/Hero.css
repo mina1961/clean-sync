@@ -1,0 +1,48 @@
+.hero {
+    min-height: calc(100vh - 120px);
+    display: flex;
+    align-items: center;
+    padding: 80px 6%;
+    overflow: hidden;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.hero-label {
+    margin-bottom: 20px;
+
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+
+    color: var(--carbon);
+}
+
+.hero-title {
+    margin: 0;
+
+    font-size: clamp(5rem, 13vw, 13rem);
+    font-weight: 800;
+    line-height: 0.82;
+    letter-spacing: -0.07em;
+
+    color: var(--carbon);
+}
+
+.hero-title span {
+    color: var(--volt);
+}
+
+.hero-description {
+    max-width: 520px;
+    margin-top: 40px;
+
+    font-size: 1.1rem;
+    line-height: 1.6;
+
+    color: #555b62;
+}
