@@ -1,0 +1,71 @@
+.cleaning-card {
+    position: relative;
+
+    padding: 28px;
+    border: 1px solid var(--steel);
+    background: rgba(255, 255, 255, 0.35);
+
+    transition:
+        transform 0.3s var(--ease-silk),
+        border-color 0.3s var(--ease-silk);
+}
+
+.cleaning-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--carbon);
+}
+
+.cleaning-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 36px;
+}
+
+.cleaning-label,
+.cleaning-date {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+}
+
+.cleaning-label {
+    color: #6b7077;
+}
+
+.cleaning-date {
+    color: var(--carbon);
+}
+
+.cleaning-house {
+    margin: 0 0 40px;
+
+    font-size: clamp(2rem, 3vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+
+    color: var(--carbon);
+}
+
+.cleaning-info {
+    padding-top: 18px;
+    border-top: 1px solid var(--steel);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 0.9rem;
+}
+
+.cleaning-info span {
+    color: #6b7077;
+}
+
+.cleaning-info strong {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    font-weight: 500;
+
+    color: var(--carbon);
+}

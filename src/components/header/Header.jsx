@@ -1,10 +1,16 @@
 import "./Header.css"
+import { useState } from 'react'
 import { Link, NavLink } from 'react-router'
 
 export default function Header() {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const getNavLinkClass = ({ isActive }) => {
         return isActive ? "nav-link active" : "nav-link";
+    };
+
+    const closeMenu = () => {
+        setIsMenuOpen(false);
     };
 
     return (
@@ -15,21 +21,29 @@ export default function Header() {
                     CleanSync
                 </Link>
 
-                <div className="nav-menu">
-                    <NavLink to="/" end className={getNavLinkClass}>
+                <button
+                    className="menu-toggle"
+                    onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    aria-label="Toggle navigation"
+                >
+                    ☰
+                </button>
+
+                <div className={`nav-menu ${isMenuOpen ? "open" : ""}`}>
+                    <NavLink to="/" end className={getNavLinkClass} onClick={closeMenu}>
                         Home
                     </NavLink>
-                    <NavLink to="/schedule" className={getNavLinkClass} >
+                    <NavLink to="/schedule" className={getNavLinkClass} onClick={closeMenu}>
                         Schedule
                     </NavLink>
-                    <NavLink to="/houses" className={getNavLinkClass}>
+                    <NavLink to="/houses" className={getNavLinkClass} onClick={closeMenu}>
                         Houses
                     </NavLink>
-                    <NavLink to="/login" className={getNavLinkClass}>
+                    <NavLink to="/login" className={getNavLinkClass} onClick={closeMenu}>
                         Login
                     </NavLink>
 
-                    <NavLink to="/register" className={getNavLinkClass}>
+                    <NavLink to="/register" className={getNavLinkClass} onClick={closeMenu}>
                         Register
                     </NavLink>
                 </div>
