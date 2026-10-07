@@ -1,7 +1,13 @@
-import './Hero.css';
+import "./Hero.css";
+
 export default function Hero() {
     return (
-       <section className="hero">
+        <section className="hero">
+
+            <div className="hero-glass glass-a"></div>
+            <div className="hero-glass glass-b"></div>
+            <div className="hero-glass glass-c"></div>
+
             <div className="hero-content">
                 <p className="hero-label mono">
                     GUEST HOUSE CLEANING MANAGEMENT
@@ -16,6 +22,7 @@ export default function Hero() {
                     in one place.
                 </p>
             </div>
+
         </section>
     );
 }
