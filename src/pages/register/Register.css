@@ -1,0 +1,136 @@
+
+/* Register page */
+
+.register-page {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 48px 20px;
+    background: #101519;
+}
+
+.register-card {
+    width: 100%;
+    max-width: 430px;
+    padding: 42px 36px;
+    background: #1c2428;
+    border: 1px solid #465252;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.register-title {
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.register-subtitle {
+    color: #aebbbb;
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.register-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.register-field label {
+    color: #cdd5d5;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.register-field input {
+    width: 100%;
+    padding: 13px 15px;
+    color: #ffffff;
+    background: #11181c;
+    border: 1px solid #536060;
+    border-radius: 9px;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.register-field input:focus {
+    border-color: #c7ff00;
+    box-shadow: 0 0 0 3px rgba(199, 255, 0, 0.12);
+}
+
+.register-field input::placeholder {
+    color: #849494;
+}
+
+.register-button {
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px;
+    background: #c7ff00;
+    color: #101519;
+    border: none;
+    border-radius: 9px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.register-button:hover:not(:disabled) {
+    background: #d8ff55;
+    transform: translateY(-2px);
+}
+
+.register-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.register-error {
+    color: #ff9292;
+    font-size: 13px;
+}
+
+.register-success {
+    color: #c7ff00;
+    font-size: 13px;
+}
+
+.register-footer {
+    margin-top: 24px;
+    text-align: center;
+    color: #aebbbb;
+    font-size: 14px;
+}
+
+.register-footer a {
+    color: #c7ff00;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.register-footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .register-card {
+        padding: 30px 22px;
+    }
+
+    .register-title {
+        font-size: 26px;
+    }
+}
