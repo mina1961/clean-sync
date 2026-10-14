@@ -65,7 +65,7 @@ return (
                 Join your cleaning team
             </p>
 
-            <form className="register-form" onSubmit={submitHandler}>
+            <form className="register-form" onSubmit={submitHandler} autoComplete="off">
                 <div className="register-field">
                     <label htmlFor="register-email">Email</label>
                     <input

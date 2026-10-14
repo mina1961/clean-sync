@@ -53,7 +53,7 @@ export default function Login() {
                     Sign in to your CleanSync account
                 </p>
 
-                <form className="register-form" onSubmit={submitHandler}>
+                <form className="register-form" onSubmit={submitHandler} autoComplete="off">
                     <div className="register-field">
                         <label htmlFor="login-email">Email</label>
                         <input
