@@ -1,10 +1,13 @@
 
 import { useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { supabase } from '../../lib/supabase';
 import '../register/Register.css';
 
 export default function Login() {
+
+const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         email: '',
         password: '',
@@ -36,7 +39,7 @@ export default function Login() {
             if (error) throw error;
 
             // След успешен вход засега отиваме на Home.
-            window.location.href = '/';
+            navigate('/dashboard', { replace: true });
         } catch (err) {
             setError(err.message);
         } finally {
