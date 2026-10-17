@@ -4,6 +4,8 @@ export default function Hero() {
     return (
         <section className="hero">
 
+            <div className="hero-grid"></div>
+
             <div className="hero-glass glass-a"></div>
             <div className="hero-glass glass-b"></div>
             <div className="hero-glass glass-c"></div>

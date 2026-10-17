@@ -44,3 +44,12 @@ button {
 .mono {
     font-family: 'JetBrains Mono', monospace;
 }
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--steel) 1px, transparent 1px), linear-gradient(90deg, var(--steel) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.35;
+  z-index: 1;
+}

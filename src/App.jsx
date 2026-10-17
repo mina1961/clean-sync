@@ -8,7 +8,7 @@ import Houses from './pages/houses/Houses.jsx'
 import Register from './pages/register/Register.jsx'
 import Login from './pages/login/Login.jsx'
 import ProtectedRoute from './components/protected-route/ProtectedRoute';
-import Dashboard from './pages/dashboard/Dashboard';
+import Dashboard from './pages/dashboard/CleaningDashboard.jsx';
 import GuestRoute from './components/guest-route/GuestRoute';
 
 

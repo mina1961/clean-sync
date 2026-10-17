@@ -9,16 +9,16 @@ export default function Header() {
 
     const { isAuthenticated, loading } = useAuth();
 
-async function logoutHandler() {
-    const { error } = await supabase.auth.signOut();
+    async function logoutHandler() {
+        const { error } = await supabase.auth.signOut();
 
-    if (error) {
-        console.error('Logout error:', error.message);
-        return;
+        if (error) {
+            console.error('Logout error:', error.message);
+            return;
+        }
+
+        closeMenu();
     }
-
-    closeMenu();
-}
 
     const getNavLinkClass = ({ isActive }) => {
         return isActive ? "nav-link active" : "nav-link";
@@ -54,36 +54,49 @@ async function logoutHandler() {
                     <NavLink to="/houses" className={getNavLinkClass} onClick={closeMenu}>
                         Houses
                     </NavLink>
-                    
-{!loading && (
-    isAuthenticated ? (
-        <button
-            type="button"
-            className="nav-link"
-            onClick={logoutHandler}
-        >
-            Logout
-        </button>
-    ) : (
-        <>
-            <NavLink
-                to="/login"
-                className={getNavLinkClass}
-                onClick={closeMenu}
-            >
-                Login
-            </NavLink>
 
-            <NavLink
-                to="/register"
-                className={getNavLinkClass}
-                onClick={closeMenu}
-            >
-                Register
-            </NavLink>
-        </>
-    )
-)}
+                    {!loading && (
+                        isAuthenticated
+                            ?
+                            (
+                                <>
+                                    <NavLink
+                                        to="/dashboard"
+                                        className={getNavLinkClass}
+                                        onClick={closeMenu}
+                                    >
+                                        Dashboard
+                                    </NavLink>
+                                    <button
+                                        type="button"
+                                        className="nav-link"
+                                        onClick={logoutHandler}
+                                    >
+                                        Logout
+                                    </button>
+                                </>
+                            )
+                            :
+                            (
+                                <>
+                                    <NavLink
+                                        to="/login"
+                                        className={getNavLinkClass}
+                                        onClick={closeMenu}
+                                    >
+                                        Login
+                                    </NavLink>
+
+                                    <NavLink
+                                        to="/register"
+                                        className={getNavLinkClass}
+                                        onClick={closeMenu}
+                                    >
+                                        Register
+                                    </NavLink>
+                                </>
+                            )
+                    )}
 
                 </div>
             </nav>

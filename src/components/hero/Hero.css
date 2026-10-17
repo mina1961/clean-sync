@@ -8,6 +8,16 @@
     isolation: isolate;
 }
 
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--steel) 1px, transparent 1px), linear-gradient(90deg, var(--steel) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  opacity: 0.35;
+  z-index: 1;
+}
+
 .hero-content {
     width: 100%;
     max-width: 1400px;
@@ -56,7 +66,7 @@
     z-index: -1;
 
     border: 1px solid rgba(13, 14, 21, 0.12);
-    background: rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.478);
 
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -72,7 +82,7 @@
     right: 2%;
 
     border-radius: 50%;
-
+    
     animation: bob-a 9s ease-in-out infinite;
 }
 
