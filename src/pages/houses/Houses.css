@@ -1,0 +1,49 @@
+.houses-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+@media (max-width: 900px) {
+    .houses-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .houses-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+.houses-page {
+    min-height: 100vh;
+    padding: 48px 20px 80px;
+
+    background-image:
+        linear-gradient(rgba(150, 160, 170, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(150, 160, 170, 0.1) 1px, transparent 1px);
+
+    background-size: 60px 60px;
+}
+
+
+.houses-header {
+    max-width: 1200px;
+    margin: 0 auto 32px;
+}
+
+.houses-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.houses-header p {
+    color: #666;
+    font-size: 1.1rem;
+}

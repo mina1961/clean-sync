@@ -1,7 +1,8 @@
 
 import { useEffect, useState } from 'react';
 import { supabase } from '../../lib/supabase';
-
+import HouseCard from '../../components/house-card/HouseCard';
+import './Houses.css';
 export default function Houses() {
     const [houses, setHouses] = useState([]);
 
@@ -26,13 +27,16 @@ export default function Houses() {
     }, []);
 
     return (
-        <section>
-            <h1>Guest Houses</h1>
-            {loading && <p>Loading houses...</p>}
-
-            {!loading && houses.map((house) => (
-                <p key={house.id}>{house.name}</p>
-            ))}
+        <section className="houses-page">
+            <div className="houses-header">
+                <h1>Guest Houses</h1>
+                <p>Explore the guest houses managed by CleanSync.</p>
+            </div>
+            <div className="houses-grid">
+                {!loading && houses.map((house) => (
+                    <HouseCard key={house.id} house={house} />
+                ))}
+            </div>
         </section>
     );
 }

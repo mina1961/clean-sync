@@ -1,0 +1,18 @@
+
+.house-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.house-card h2 {
+    margin-bottom: 16px;
+    font-size: 1.4rem;
+}
+
+.house-card p {
+    margin-bottom: 8px;
+    color: #555;
+}
