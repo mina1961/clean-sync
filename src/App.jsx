@@ -10,7 +10,7 @@ import Login from './pages/login/Login.jsx'
 import ProtectedRoute from './components/protected-route/ProtectedRoute';
 import Dashboard from './pages/dashboard/CleaningDashboard.jsx';
 import GuestRoute from './components/guest-route/GuestRoute';
-
+import HouseDetails from "./pages/house-details/HouseDetails";
 
 function App() {
 
@@ -21,6 +21,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/houses" element={<Houses />} />
+        <Route path="/houses/:houseId" element={<HouseDetails />} />
 
         <Route element={<GuestRoute />}>
           <Route path="/login" element={<Login />} />
@@ -29,6 +30,7 @@ function App() {
 
         <Route element={<ProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          
         </Route>
       </Routes>
 
