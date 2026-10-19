@@ -152,7 +152,16 @@ export default function HouseDetails() {
             )}
 
             {isAuthenticated ? (
-                <AddCleaningForm houseId={house.id} />
+                <AddCleaningForm
+                    houseId={house.id}
+                    onCleaningAdded={(newCleaning) => {
+                        setCleanings((prevCleanings) =>
+                            [...prevCleanings, newCleaning].sort((a, b) =>
+                                a.cleaning_date.localeCompare(b.cleaning_date)
+                            )
+                        );
+                    }}
+                />
             ) : (
                 <p>Please log in to schedule a cleaning.</p>
             )}

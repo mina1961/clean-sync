@@ -16,6 +16,7 @@ export default function Schedule() {
                 .from('cleanings')
                 .select(`
                 id,
+                house_id,
                 cleaning_date,
                 cleaning_time,
                 status,
@@ -35,6 +36,11 @@ export default function Schedule() {
         fetchCleanings();
     }, []);
 
+    const groupedCleanings = Object.groupBy(
+        cleanings,
+        (cleaning) => cleaning.house_id
+    );
+
     return (
         <main className="schedule-page">
             <div className="schedule-heading">
@@ -43,12 +49,11 @@ export default function Schedule() {
                 <span>Upcoming guest house cleanings</span>
             </div>
             <div className="cleaning-grid">
-                {cleanings.map((cleaning) => (
+                {Object.entries(groupedCleanings).map(([houseId, houseCleanings]) => (
                     <CleaningCard
-                        key={cleaning.id}
-                        house={cleaning.houses?.name}
-                        date={cleaning.cleaning_date}
-                        time={cleaning.cleaning_time?.slice(0, 5)}
+                        key={houseId}
+                        house={houseCleanings[0].houses?.name}
+                        cleanings={houseCleanings}
                     />
                 ))}
             </div>

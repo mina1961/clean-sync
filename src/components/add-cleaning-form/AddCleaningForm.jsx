@@ -1,21 +1,23 @@
 import { useState } from "react";
 import { supabase } from "../../lib/supabase";
 
-export default function AddCleaningForm({ houseId }) {
+export default function AddCleaningForm({ houseId, onCleaningAdded }) {
     const [cleaningDate, setCleaningDate] = useState("");
     const [cleaningTime, setCleaningTime] = useState("");
 
     async function handleSubmit(event) {
         event.preventDefault();
 
-        const { error } = await supabase
+        const { data, error } = await supabase
             .from("cleanings")
             .insert({
                 house_id: houseId,
                 cleaning_date: cleaningDate,
                 cleaning_time: cleaningTime,
                 status: "scheduled",
-            });
+            })
+            .select()
+            .single();
 
         if (error) {
             console.error("Error saving cleaning:", error.message);
@@ -23,7 +25,7 @@ export default function AddCleaningForm({ houseId }) {
             return;
         }
 
-        alert("Cleaning scheduled successfully!");
+        onCleaningAdded(data);
 
         setCleaningDate("");
         setCleaningTime("");

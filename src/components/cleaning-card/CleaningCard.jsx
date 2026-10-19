@@ -1,28 +1,25 @@
+
 import "./CleaningCard.css";
 
-export default function CleaningCard({ house, date, time }) {
+export default function CleaningCard({ house, cleanings }) {
     return (
         <article className="cleaning-card">
-
             <div className="cleaning-card-header">
                 <span className="cleaning-label mono">
-                    UPCOMING CLEANING
-                </span>
-
-                <span className="cleaning-date mono">
-                    {date}
+                    UPCOMING CLEANINGS
                 </span>
             </div>
 
-            <h2 className="cleaning-house">
-                {house}
-            </h2>
+            <h2 className="cleaning-house">{house}</h2>
 
-            <div className="cleaning-info">
-                <span>Cleaning time</span>
-                <strong>{time}</strong>
-            </div>
-
+            {cleanings.map((cleaning) => (
+                <div className="cleaning-info" key={cleaning.id}>
+                    <span>{cleaning.cleaning_date}</span>
+                    <strong>
+                        {cleaning.cleaning_time?.slice(0, 5)}
+                    </strong>
+                </div>
+            ))}
         </article>
     );
 }

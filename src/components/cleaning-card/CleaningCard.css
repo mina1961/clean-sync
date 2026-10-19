@@ -69,3 +69,12 @@
 
     color: var(--carbon);
 }
+
+.cleaning-info {
+    padding: 16px 0;
+    border-top: 1px solid #d8dee5;
+}
+
+.cleaning-info:first-of-type {
+    border-top: none;
+}
