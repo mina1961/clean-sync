@@ -1,4 +1,4 @@
-
+import { Link } from "react-router";
 import "./CleaningCard.css";
 
 export default function CleaningCard({ house, cleanings }) {
@@ -18,6 +18,14 @@ export default function CleaningCard({ house, cleanings }) {
                     <strong>
                         {cleaning.cleaning_time?.slice(0, 5)}
                     </strong>
+
+                    <Link
+                        to={`/cleanings/${cleaning.id}`}
+                        className="cleaning-details-link"
+                    >
+                        View Details →
+                    </Link>
+
                 </div>
             ))}
         </article>

@@ -11,7 +11,7 @@ export default function GuestRoute() {
 
     if (isAuthenticated) {
        
-        return <Navigate to="/dashboard" replace />;
+        return <Navigate to="/schedule" replace />;
     }
     
     return <Outlet />;

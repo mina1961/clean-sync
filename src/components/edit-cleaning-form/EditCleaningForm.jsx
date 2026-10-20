@@ -14,15 +14,42 @@ export default function EditCleaningForm({
         cleaning.cleaning_time.slice(0, 5)
     );
 
+    const [adults, setAdults] = useState(
+        cleaning.adults ?? ""
+    );
+
+    const [children, setChildren] = useState(
+        cleaning.children ?? ""
+    );
+
+    const [welcomePackage, setWelcomePackage] = useState(
+        cleaning.welcome_package ?? false
+    );
+
+    const [lateArrival, setLateArrival] = useState(
+        cleaning.late_arrival ?? false
+    );
+
+    const [leaveLightsOn, setLeaveLightsOn] = useState(
+        cleaning.leave_lights_on ?? false
+    );
+
     async function handleSubmit(event) {
         event.preventDefault();
 
         const { data, error } = await supabase
             .from("cleanings")
+
             .update({
                 cleaning_date: cleaningDate,
                 cleaning_time: cleaningTime,
+                adults: Number(adults),
+                children: Number(children),
+                welcome_package: welcomePackage,
+                late_arrival: lateArrival,
+                leave_lights_on: leaveLightsOn,
             })
+
             .eq("id", cleaning.id)
             .select()
             .single();
@@ -69,6 +96,65 @@ export default function EditCleaningForm({
                 }
                 required
             />
+
+
+            <h3 className="mt-4 text-lg font-semibold text-slate-900">
+                Incoming Guests
+            </h3>
+
+            <label htmlFor="edit-adults">Adults</label>
+            <input
+                id="edit-adults"
+                type="number"
+                min="0"
+                required
+                value={adults}
+                onChange={(event) => setAdults(event.target.value)}
+                className="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-3"
+            />
+
+            <label htmlFor="edit-children">Children</label>
+            <input
+                id="edit-children"
+                type="number"
+                min="0"
+                required
+                value={children}
+                onChange={(event) => setChildren(event.target.value)}
+                className="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-3"
+            />
+
+            <h3 className="mt-4 text-lg font-semibold text-slate-900">
+                Special Requirements
+            </h3>
+
+            <label className="flex items-center gap-3">
+                <input
+                    type="checkbox"
+                    checked={welcomePackage}
+                    onChange={(event) => setWelcomePackage(event.target.checked)}
+                />
+                Welcome Package
+            </label>
+
+            <label className="flex items-center gap-3">
+                <input
+                    type="checkbox"
+                    checked={lateArrival}
+                    onChange={(event) => setLateArrival(event.target.checked)}
+                />
+                Late Arrival
+            </label>
+
+            <label className="flex items-center gap-3">
+                <input
+                    type="checkbox"
+                    checked={leaveLightsOn}
+                    onChange={(event) => setLeaveLightsOn(event.target.checked)}
+                />
+                Leave Lights On
+            </label>
+
 
             <div className="flex items-center gap-4 pt-4">
                 <button

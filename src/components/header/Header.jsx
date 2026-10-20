@@ -48,9 +48,11 @@ export default function Header() {
                     <NavLink to="/" end className={getNavLinkClass} onClick={closeMenu}>
                         Home
                     </NavLink>
+
                     <NavLink to="/schedule" className={getNavLinkClass} onClick={closeMenu}>
-                        Schedule
+                        {isAuthenticated ? "Schedule" : "Our Villas"}
                     </NavLink>
+
                     <NavLink to="/houses" className={getNavLinkClass} onClick={closeMenu}>
                         Houses
                     </NavLink>
@@ -60,13 +62,7 @@ export default function Header() {
                             ?
                             (
                                 <>
-                                    <NavLink
-                                        to="/dashboard"
-                                        className={getNavLinkClass}
-                                        onClick={closeMenu}
-                                    >
-                                        Dashboard
-                                    </NavLink>
+
                                     <button
                                         type="button"
                                         className="nav-link"

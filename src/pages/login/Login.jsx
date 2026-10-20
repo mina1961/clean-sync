@@ -6,7 +6,7 @@ import '../register/Register.css';
 
 export default function Login() {
 
-const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         email: '',
@@ -39,7 +39,7 @@ const navigate = useNavigate();
             if (error) throw error;
 
             // След успешен вход засега отиваме на Home.
-            navigate('/dashboard', { replace: true });
+            navigate('/schedule', { replace: true });
         } catch (err) {
             setError(err.message);
         } finally {
