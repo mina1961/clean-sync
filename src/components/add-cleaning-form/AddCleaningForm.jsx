@@ -32,8 +32,13 @@ export default function AddCleaningForm({ houseId, onCleaningAdded }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <h3>Add Cleaning</h3>
+        <form
+            onSubmit={handleSubmit}
+            className="mt-10 flex flex-col gap-5 rounded-2xl border border-slate-200 bg-white p-6 md:p-8"
+        >
+            <h3 className="text-2xl font-bold text-slate-900">
+                Add Cleaning
+            </h3>
 
             <label htmlFor="cleaning-date">Cleaning Date</label>
             <input
@@ -41,6 +46,7 @@ export default function AddCleaningForm({ houseId, onCleaningAdded }) {
                 type="date"
                 value={cleaningDate}
                 onChange={(event) => setCleaningDate(event.target.value)}
+                className="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 focus:border-lime-400 focus:outline-none"
                 required
             />
 
@@ -50,10 +56,16 @@ export default function AddCleaningForm({ houseId, onCleaningAdded }) {
                 type="time"
                 value={cleaningTime}
                 onChange={(event) => setCleaningTime(event.target.value)}
+                className="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-3 text-slate-900 focus:border-lime-400 focus:outline-none"
                 required
             />
 
-            <button type="submit">Save Cleaning</button>
+            <button
+                type="submit"
+                className="mt-2 w-full rounded-lg bg-slate-950 px-6 py-3 font-semibold text-white transition-colors duration-200 hover:bg-lime-400 hover:text-slate-950"
+            >
+                Save Cleaning
+            </button>
         </form>
     );
 }

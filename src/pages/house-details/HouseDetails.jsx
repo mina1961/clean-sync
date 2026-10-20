@@ -4,6 +4,7 @@ import { supabase } from "../../lib/supabase";
 import AddCleaningForm from "../../components/add-cleaning-form/AddCleaningForm";
 import { useAuth } from "../../contexts/AuthContext";
 import EditCleaningForm from "../../components/edit-cleaning-form/EditCleaningForm";
+import "./HouseDetails.css";
 
 export default function HouseDetails() {
     const { houseId } = useParams();
@@ -96,13 +97,43 @@ export default function HouseDetails() {
 
     return (
         <main className="house-details-page">
-            <h1>{house.name}</h1>
+            <div className="house-details-heading">
+                <p className="mono">GUEST HOUSES / DETAILS</p>
+                <h1>{house.name}</h1>
+                <p className="house-details-location">
+                    {house.location}
+                </p>
+            </div>
 
-            <p>Bedrooms: {house.bedrooms}</p>
-            <p>Bathrooms: {house.bathrooms}</p>
-            <p>Location: {house.location}</p>
+            {house.image_url && (
+                <div className="mt-8 mb-12 overflow-hidden rounded-2xl">
+                    <img
+                        src={house.image_url}
+                        alt={house.name}
+                        className="w-full h-80 object-cover md:h-[480px]"
+                    />
+                </div>
+            )}
 
-            <h2>Cleaning Schedule</h2>
+            <div className="house-details-stats">
+                <div className="house-stat">
+                    <span className="house-stat-number">
+                        {house.bedrooms}
+                    </span>
+                    <span>Bedrooms</span>
+                </div>
+
+                <div className="house-stat">
+                    <span className="house-stat-number">
+                        {house.bathrooms}
+                    </span>
+                    <span>Bathrooms</span>
+                </div>
+            </div>
+
+            <h2 className="mb-6 text-3xl font-bold text-slate-950">
+                Cleaning Schedule
+            </h2>
             {editingCleaning && (
                 <EditCleaningForm
                     key={editingCleaning.id}
@@ -126,21 +157,27 @@ export default function HouseDetails() {
                 <p>No cleanings scheduled yet.</p>
             ) : (
                 cleanings.map((cleaning) => (
-                    <div key={cleaning.id}>
+                    <div key={cleaning.id}
+                        className="mb-6 flex flex-col gap-3 rounded-xl border border-slate-200 bg-white p-6 md:p-8 shadow-sm"
+                    >
                         <p>Date: {cleaning.cleaning_date}</p>
                         <p>Time: {cleaning.cleaning_time?.slice(0, 5)}</p>
                         <p>Status: {cleaning.status}</p>
 
                         {cleaning.created_by === user?.id && (
-                            <div className="cleaning-actions">
+                            <div className="mt-4 flex items-center gap-3 border-t border-slate-100 pt-4">
+
                                 <button
                                     type="button"
+                                    className="rounded-lg bg-slate-950 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-lime-400 hover:text-slate-950"
                                     onClick={() => setEditingCleaning(cleaning)}
                                 >
                                     Edit
                                 </button>
+                                
                                 <button
                                     type="button"
+                                    className="rounded-lg border border-red-200 px-5 py-2 text-sm font-semibold text-red-600 transition-colors hover:bg-red-50"
                                     onClick={() => handleDelete(cleaning.id)}
                                 >
                                     Delete

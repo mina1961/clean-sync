@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
     --titanium: #F4F5F6;
     --carbon: #0D0E15;
@@ -10,8 +12,6 @@
 }
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
@@ -36,9 +36,7 @@ a {
 button {
     font-family: inherit;
     border: none;
-    background: none;
     cursor: pointer;
-    color: inherit;
 }
 
 .mono {
