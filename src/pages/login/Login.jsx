@@ -41,7 +41,7 @@ export default function Login() {
             // След успешен вход засега отиваме на Home.
             navigate('/schedule', { replace: true });
         } catch (err) {
-            setError(err.message);
+            setError("Incorrect email or password. Please try again.");
         } finally {
             setLoading(false);
         }

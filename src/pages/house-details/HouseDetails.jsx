@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "../../lib/supabase";
 import AddCleaningForm from "../../components/add-cleaning-form/AddCleaningForm";
@@ -26,7 +26,7 @@ export default function HouseDetails() {
                 .from("houses")
                 .select("*")
                 .eq("id", houseId)
-                .single();
+                .maybeSingle();
 
             if (error) {
                 setError(error.message);
@@ -88,11 +88,37 @@ export default function HouseDetails() {
     }
 
     if (error) {
-        return <p>Error: {error}</p>;
+        return (
+            <div className="max-w-4xl mx-auto px-6 py-12">
+                <h2 className="text-2xl font-bold mb-4">
+                    {error}
+                </h2>
+
+                <Link
+                    to="/houses"
+                    className="text-blue-600 hover:underline"
+                >
+                    ← Back to Houses
+                </Link>
+            </div>
+        );
     }
 
     if (!house) {
-        return <p>House not found.</p>;
+        return (
+            <div className="max-w-4xl mx-auto px-6 py-12">
+                <h2 className="text-2xl font-bold mb-4">
+                    House not found.
+                </h2>
+
+                <Link
+                    to="/houses"
+                    className="text-blue-600 hover:underline"
+                >
+                    ← Back to Houses
+                </Link>
+            </div>
+        );
     }
 
     return (
@@ -174,7 +200,7 @@ export default function HouseDetails() {
                                 >
                                     Edit
                                 </button>
-                                
+
                                 <button
                                     type="button"
                                     className="rounded-lg border border-red-200 px-5 py-2 text-sm font-semibold text-red-600 transition-colors hover:bg-red-50"
