@@ -9,7 +9,7 @@ import Register from './pages/register/Register.jsx'
 import Login from './pages/login/Login.jsx'
 import GuestRoute from './components/guest-route/GuestRoute';
 import HouseDetails from "./pages/house-details/HouseDetails";
-
+import ProtectedRoute from './components/protected-route/ProtectedRoute';
 import CleaningDetails from "./pages/cleaning-details/CleaningDetails";
 
 
@@ -23,7 +23,10 @@ function App() {
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/houses" element={<Houses />} />
         <Route path="/houses/:houseId" element={<HouseDetails />} />
-        <Route path="/cleanings/:cleaningId" element={<CleaningDetails />}/>
+
+        <Route element={<ProtectedRoute />}>
+          <Route path="/cleanings/:cleaningId" element={<CleaningDetails />} />
+        </Route>
 
         <Route element={<GuestRoute />}>
           <Route path="/login" element={<Login />} />
