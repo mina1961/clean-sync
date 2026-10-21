@@ -22,10 +22,12 @@ export default function CleaningDetails() {
                 .select("*, houses(name)")
 
                 .eq("id", cleaningId)
-                .single();
+                .maybeSingle();
 
             if (error) {
                 setError(error.message);
+            } else if (!data) {
+                setError("Cleaning not found.");
             } else {
                 setCleaning(data);
             }
@@ -46,9 +48,18 @@ export default function CleaningDetails() {
 
     if (error) {
         return (
-            <p className="p-8 text-red-600">
-                Error: {error}
-            </p>
+            <div className="max-w-4xl mx-auto px-6 py-12">
+                <h2 className="text-2xl font-bold mb-4">
+                    {error}
+                </h2>
+
+                <Link
+                    to="/schedule"
+                    className="text-blue-600 hover:underline"
+                >
+                    ← Back to Schedule
+                </Link>
+            </div>
         );
     }
 
