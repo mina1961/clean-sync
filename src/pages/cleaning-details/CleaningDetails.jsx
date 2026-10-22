@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import { supabase } from "../../lib/supabase";
+import CleaningResponses from "../../components/cleaning-responses/CleaningResponses";
 
 export default function CleaningDetails() {
     const { cleaningId } = useParams();
@@ -164,6 +165,9 @@ export default function CleaningDetails() {
                     </p>
                 </div>
             </div>
+
+            <CleaningResponses cleaningId={cleaning.id} />
+
         </main>
     );
 }

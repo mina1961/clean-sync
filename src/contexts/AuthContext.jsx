@@ -15,7 +15,7 @@ export function AuthProvider({ children }) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Проверяваме дали вече има активна сесия.
+        
         supabase.auth.getSession().then(({ data, error }) => {
             if (error) {
                 console.error('Session error:', error.message);
@@ -25,7 +25,7 @@ export function AuthProvider({ children }) {
             setLoading(false);
         });
 
-        // Следим за Login, Logout и други промени.
+        
         const {
             data: { subscription },
         } = supabase.auth.onAuthStateChange(
@@ -35,7 +35,6 @@ export function AuthProvider({ children }) {
             }
         );
 
-        // Почистваме абонамента при unmount.
         return () => {
             subscription.unsubscribe();
         };

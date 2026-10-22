@@ -172,12 +172,6 @@ export default function EditCleaningForm({
                     Cancel
                 </button>
             </div>
-
-            {/* <button type="submit">Save Changes</button>
-
-            <button type="button" onClick={onCancel}>
-                Cancel
-            </button> */}
         </form>
     );
 }
