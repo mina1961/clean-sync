@@ -9,13 +9,13 @@
 }
 
 .hero-grid {
-  position: absolute;
-  inset: 0;
-  background-image: linear-gradient(var(--steel) 1px, transparent 1px), linear-gradient(90deg, var(--steel) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-  opacity: 0.35;
-  z-index: 1;
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(var(--steel) 1px, transparent 1px), linear-gradient(90deg, var(--steel) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    opacity: 0.35;
+    z-index: 1;
 }
 
 .hero-content {
@@ -82,7 +82,7 @@
     right: 2%;
 
     border-radius: 50%;
-    
+
     animation: bob-a 9s ease-in-out infinite;
 }
 
@@ -147,5 +147,14 @@
 
     50% {
         transform: translate(20px, 30px);
+    }
+}
+
+/* Responsive hero title */
+@media (max-width: 600px) {
+    .hero-title {
+        font-size: clamp(2.2rem, 13vw, 3.5rem);
+        letter-spacing: -0.07em;
+        line-height: 1;
     }
 }
