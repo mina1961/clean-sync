@@ -5,8 +5,6 @@ import { supabase } from '../../lib/supabase';
 import { useAuth } from "../../contexts/AuthContext";
 import VillaCard from "../../components/villa-card/VillaCard";
 
-const cleanings = []
-
 export default function Schedule() {
 
     const { isAuthenticated, loading: authLoading } = useAuth();

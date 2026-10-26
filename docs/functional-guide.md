@@ -1,5 +1,15 @@
 # CleanSync – Functional Guide
 
+CleanSync is a web application developed as a final exam project for the React course at SoftUni (Software University).
+
+The application is designed to simplify the management of cleaning schedules for holiday rental properties. It helps cleaning teams organize scheduled cleanings, manage guest arrival requirements, and coordinate employee availability and comments through a secure, user-friendly interface.
+
+CleanSync is built with React, Vite, Tailwind CSS, and Supabase, demonstrating practical skills in component-based development, routing, authentication, CRUD operations, and database integration.
+
+Live Application: https://cleansync.vedioweb.com
+
+GitHub Repository: https://github.com/mina1961/clean-sync
+
 ## 1. Project Overview
 
 ### Application Name
@@ -61,22 +71,38 @@ Both details pages retrieve the selected record from Supabase using a dynamic UR
 ## 6. Data Source & Backend
 CleanSync uses Supabase as its Backend as a Service (BaaS) platform. Supabase provides a hosted PostgreSQL database, authentication services, and an API for accessing application data.
 
-The application uses two main database tables:
+The application uses three main database tables:
 
-- `houses` — stores villa information, including name, location, number of bedrooms and bathrooms, images, and descriptions.
-- `cleanings` — stores cleaning appointments, including the associated villa, date, time, status, guest information, special requirements, and the ID of the user who created each record.
+- `houses` – stores villa information, including names, images, and descriptions.
+- `cleanings` – stores cleaning appointments, including the associated villa, date, time, status, guest information, special requirements, and the ID of the user who created each record.
+- `cleaning_responses` – stores employee responses to scheduled cleanings, including the cleaning ID, user ID, availability status, optional comments, and timestamps.
 
 React communicates with Supabase through the Supabase JavaScript client. Data is retrieved and updated asynchronously without requiring a custom Express or Node.js backend.
 
 Supabase Row Level Security (RLS) policies control access to database records. Public users can read villa information, authenticated users can access cleaning records, and only the creator of a cleaning record can update or delete it.
 
+Authenticated employees can submit and update their own availability responses and comments for scheduled cleanings. Team responses can be viewed by authenticated users.
+
 The React frontend is deployed on Hostinger, while the database and authentication services are hosted by Supabase.
 
 ## 7. CRUD Operations
-- [x] Create - Authenticated users can create cleaning appointments for individual villas, including the cleaning date, time, guest information, and special requirements.
-- [x] Read - Authenticated users can view scheduled cleanings and open a details page for an individual cleaning record.
-- [x] Update - Users can edit cleaning appointments that they created. Changes are saved to Supabase and reflected in the application.
-- [x] Delete - Users can delete their own cleaning appointments.
+
+CleanSync implements full CRUD functionality for cleaning appointments:
+
+- **Create** – Authenticated users can create cleaning appointments for individual villas, including the cleaning date, time, guest information, and special requirements.
+- **Read** – Authenticated users can view scheduled cleanings and open a details page for an individual cleaning record.
+- **Update** – Users can edit cleaning appointments they created. Changes are saved to Supabase and reflected in the application.
+- **Delete** – Users can delete their own cleaning appointments.
+
+### Employee Availability & Comments
+
+Authenticated employees can respond to scheduled cleaning appointments:
+
+- **Create** – Submit an availability response (Available or Unavailable) with an optional comment.
+- **Read** – View availability responses and comments submitted by team members.
+- **Update** – Change their own availability status or edit their comments.
+
+Employee responses are stored in the `cleaning_responses` table. Supabase Row Level Security ensures that employees can create and update only their own responses.
 
 ## 8. Forms & Validation
 CleanSync uses forms for user registration, login, and managing cleaning appointments.
@@ -86,6 +112,14 @@ CleanSync uses forms for user registration, login, and managing cleaning appoint
 - Controlled Inputs: React state manages form values and updates them in response to user input.
 - Form Submission: Event handlers process submitted data and communicate with Supabase.
 - Validation Feedback: Required fields and invalid input are checked before submission. Authentication errors are displayed to users.
+
+### Employee Availability Form
+
+Authenticated employees can submit their availability for a scheduled cleaning by selecting **Available** or **Unavailable** and optionally entering a comment.
+
+The form uses React state to manage user input. When submitted, the application creates a new response or updates the employee's existing response in Supabase.
+
+Each employee can modify only their own response, while authenticated team members can view the submitted availability statuses and comments.
 
 ## 9. React-Specific Techniques
 CleanSync uses modern React concepts and techniques throughout the application.
@@ -111,7 +145,11 @@ A typical user journey in CleanSync follows these steps:
 6. The new appointment appears in the cleaning schedule.
 7. The user opens the cleaning details page to review the appointment.
 8. If the user created the appointment, they can edit or delete it.
-9. The user logs out when finished. Protected cleaning management features are no longer accessible without authentication.
+9. The user opens a scheduled cleaning and selects **Available** or **Unavailable** to indicate their availability, optionally adding a comment.
+
+10. The user can view other team members' availability responses and update their own response if necessary.
+
+11. The user logs out when finished. Protected cleaning management features are no longer accessible without authentication.
 
 ## 11. Error & Edge Case Handling
 CleanSync includes error handling and validation to improve reliability and user experience.
